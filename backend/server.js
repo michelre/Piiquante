@@ -1,6 +1,9 @@
+/***Création serveur Node***/
+
 const http = require('http');
 const app = require('./app');
 
+//fonction de renvoi d'un port valide
 const normalizePort = val => {
   const port = parseInt(val, 10);
 
@@ -15,6 +18,7 @@ const normalizePort = val => {
 const port = normalizePort('3000');
 app.set('port', port);
 
+//fonction de recherche et gestion des erreurs
 const errorHandler = error => {
   if (error.syscall !== 'listen') {
     throw error;
@@ -37,6 +41,7 @@ const errorHandler = error => {
 
 const server = http.createServer(app);
 
+//écouteur d'évènements qui consigne le port sur lequel le serveur s'exécute dans la console.
 server.on('error', errorHandler);
 server.on('listening', () => {
   const address = server.address();

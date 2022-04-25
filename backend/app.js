@@ -1,6 +1,8 @@
+//installation express
 const express = require('express');
-
 const app = express();
+
+//installation mongoose
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://mazemar:LAhwKrGygtaVNgY4@piiquante.qgdw3.mongodb.net/piiquante?retryWrites=true&w=majority',
   { useNewUrlParser: true,
@@ -8,6 +10,7 @@ mongoose.connect('mongodb+srv://mazemar:LAhwKrGygtaVNgY4@piiquante.qgdw3.mongodb
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+//middlewares
 app.use((req, res, next) => {
   console.log('Requête reçue !');
   next();
