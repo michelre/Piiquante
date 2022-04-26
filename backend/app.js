@@ -10,7 +10,7 @@ mongoose.connect('mongodb+srv://mazemar:LAhwKrGygtaVNgY4@piiquante.qgdw3.mongodb
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
-  //Gestion du CORS pour que nos deux serveurs puissent communiquer entre eux
+//Gestion du CORS pour que nos deux serveurs puissent communiquer entre eux
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -21,6 +21,10 @@ app.use((req, res, next) => {
 //Lien vers les routes pour les sauces
 const sauceRoutes = require('./routes/sauce');
 app.use('/api/sauces', sauceRoutes);
+
+//Lien vers les route pour les utilisateurs
+const userRoutes = require('./routes/users');
+app.use('/api/auth', userRoutes);
 
 //middlewares
 app.use((req, res, next) => {
