@@ -29,7 +29,7 @@ app.use('/api/sauces', sauceRoutes);
 const userRoutes = require('./routes/users');
 app.use('/api/auth', userRoutes);
 
-//middlewares
+
 
 
 module.exports = app;

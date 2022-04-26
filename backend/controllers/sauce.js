@@ -7,7 +7,7 @@ exports.createSauce = (req, res, next) => {
     name: req.body.name,
     manufacturer: req.body.manufacturer,
     description: req.body.description,
-    mainPepper: req.body.mainPepper;
+    mainPepper: req.body.mainPepper,
     imageUrl: req.body.imageUrl,
     heat: req.body.heat,
     likes: req.body.likes,
@@ -52,7 +52,7 @@ exports.getOneSauce = (req, res, next) => {
       name: req.body.name,
       manufacturer: req.body.manufacturer,
       description: req.body.description,
-      mainPepper: req.body.mainPepper;
+      mainPepper: req.body.mainPepper,
       imageUrl: req.body.imageUrl,
       heat: req.body.heat,
       likes: req.body.likes,
