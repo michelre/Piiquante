@@ -2,6 +2,9 @@
 const express = require('express');
 const app = express();
 
+//To parse incoming JSON requests and put the parsed data in req.body.
+app.use(express.json());
+
 //installation mongoose
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://mazemar:LAhwKrGygtaVNgY4@piiquante.qgdw3.mongodb.net/piiquante?retryWrites=true&w=majority',
@@ -22,28 +25,11 @@ app.use((req, res, next) => {
 const sauceRoutes = require('./routes/sauce');
 app.use('/api/sauces', sauceRoutes);
 
-//Lien vers les route pour les utilisateurs
+//Lien vers les routes pour les utilisateurs
 const userRoutes = require('./routes/users');
 app.use('/api/auth', userRoutes);
 
 //middlewares
-app.use((req, res, next) => {
-  console.log('Requête reçue !');
-  next();
-});
 
-app.use((req, res, next) => {
-  res.status(201);
-  next();
-});
-
-app.use((req, res, next) => {
-  res.json({ message: 'Votre requête a bien été reçue !' });
-  next();
-});
-
-app.use((req, res, next) => {
-  console.log('Réponse envoyée avec succès !');
-});
 
 module.exports = app;
