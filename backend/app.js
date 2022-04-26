@@ -18,6 +18,10 @@ app.use((req, res, next) => {
   next();
 });
 
+//Lien vers les routes pour les sauces
+const sauceRoutes = require('./routes/sauce');
+app.use('/api/sauces', sauceRoutes);
+
 //middlewares
 app.use((req, res, next) => {
   console.log('Requête reçue !');
