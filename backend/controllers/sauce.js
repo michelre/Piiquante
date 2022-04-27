@@ -1,5 +1,5 @@
 
-const Sauce = require('../models/sauce');
+/*const Sauce = require('../models/sauce');
 
 exports.createSauce = (req, res, next) => {
   const sauce = new Sauce ({
@@ -103,4 +103,4 @@ exports.getOneSauce = (req, res, next) => {
         });
       }
     );
-  };
+  };*/

@@ -21,14 +21,19 @@ app.use((req, res, next) => {
   next();
 });
 
+/*
 //Lien vers les routes pour les sauces
 const sauceRoutes = require('./routes/sauce');
-app.use('/api/sauces', sauceRoutes);
+app.use('/api/sauces', sauceRoutes);*/
 
 //Lien vers les routes pour les utilisateurs
 const userRoutes = require('./routes/users');
 app.use('/api/auth', userRoutes);
 
+//test
+app.use((req, res) => {
+  res.json({ message: 'Votre requête a bien été reçue !' }); 
+});
 
 
 

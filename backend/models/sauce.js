@@ -1,6 +1,6 @@
 /***Création modèle sauce***/
 
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 
 const sauceSchema = mongoose.Schema({
     userId: { type: String, required: true }, //'identifiant MongoDB unique de l'utilisateur qui a créé la sauce
@@ -12,8 +12,8 @@ const sauceSchema = mongoose.Schema({
     heat: { type: Number, required: true }, //nombre entre 1 et 10 décrivant la sauce
     likes: { type: Number, required: true }, //nombre d'utilisateurs qui aiment (= likent) la sauce
     dislikes: { type: Number, required: true }, //nombre d'utilisateurs qui n'aiment pas (= dislike) la sauce
-    usersLiked: { type:  Array [ "String <userId>" ], required: true }, //[ "String <userId>" ] — tableau des identifiants des utilisateurs     qui ont aimé (= liked) la sauce
-    usersDisliked: { type: Array [ "String <userId>" ], required: true }, //tableau des identifiants des utilisateurs qui n'ont pas aimé (= disliked) la sauce
+    usersLiked: { type:  Array, required: true }, //[ "String <userId>" ] — tableau des identifiants des utilisateurs     qui ont aimé (= liked) la sauce
+    usersDisliked: { type: Array, required: true }, //tableau des identifiants des utilisateurs qui n'ont pas aimé (= disliked) la sauce
 });
 
-module.exports = mongoose.model('Sauce', sauceSchema);
+module.exports = mongoose.model('Sauce', sauceSchema);*/
