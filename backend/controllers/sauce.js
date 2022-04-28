@@ -14,7 +14,7 @@ exports.createSauce = (req, res, next) => {
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   });
   sauce.save()
-    .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
+    .then(() => res.status(201).json({ message: 'Sauce enregistrée!'}))
     .catch(error => res.status(400).json({ error }));
 };
 
@@ -41,7 +41,7 @@ exports.getOneSauce = (req, res, next) => {
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
       } : { ...req.body };
     Sauce.updateOne({ _id: req.params.id }, { ...sauceObject, _id: req.params.id })
-      .then(() => res.status(200).json({ message: 'Objet modifié !'}))
+      .then(() => res.status(200).json({ message: 'Sauce modifiée!'}))
       .catch(error => res.status(400).json({ error }));
   };
    
@@ -55,14 +55,14 @@ exports.getOneSauce = (req, res, next) => {
           });
         }
         if (sauce.userId !== req.auth.userId) {
-          res.status(400).json({
+          res.status(401).json({
             error: new Error('Requête non autorisée!')
           });
         } else {
           const filename = sauce.imageUrl.split('/images/')[1];
           fs.unlink(`images/${filename}`, () => {
             Sauce.deleteOne({ _id: req.params.id })
-              .then(() => res.status(200).json({ message: 'Objet supprimé !'}))
+              .then(() => res.status(200).json({ message: 'Sauce supprimée!'}))
               .catch(error => res.status(400).json({ error }));
           });
         }
@@ -83,4 +83,23 @@ exports.getOneSauce = (req, res, next) => {
         });
       }
     );
+  };
+
+  exports.likeSauce = (req, res, next) => {
+    Sauce.findOne({ _id: req.params.id })
+    .then(sauce => {
+      if (sauce.likes == 1) {
+        sauce.usersLiked.push(sauce.userId)
+        res.status(201).json({ message: "J'aime!"})
+    .catch(error => res.status(400).json({ error }));
+      }
+      if (sauce.likes == -1) {
+        sauce.usersDisliked.push(sauce.userId)
+        res.status(201).json({ message: "J'aime pas!"})
+      }
+      if (sauce.likes == 0) {
+        sauce.usersLiked.delete(sauce.userId)
+        sauce.usersDisliked.delete(sauce.userId)
+      }
+    });
   };

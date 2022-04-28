@@ -39,10 +39,10 @@ app.use('/api/auth', userRoutes);
 
 
 
-//test
+/*//test
 app.use((req, res) => {
   res.json({ message: 'Votre requête a bien été reçue !' }); 
-});
+});*/
 
 
 
