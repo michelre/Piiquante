@@ -1,6 +1,6 @@
 //installation express
 const express = require('express');
-require('dotenv')
+require('dotenv').config()
 const app = express();
 
 //To parse incoming JSON requests and put the parsed data in req.body.
